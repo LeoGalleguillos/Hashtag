@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "LeoGalleguillos\\Hashtag\\": "src/",
+            "LeoGalleguillos\\HashtagTest\\": "test/"
+        }
+    },
+    "license": "MIT",
+    "name": "leo-galleguillos/hashtag",
+    "require": {
+        "zendframework/zend-test": "^3.1",
+        "zendframework/zend-db": "^2.9"
+    }
+}
