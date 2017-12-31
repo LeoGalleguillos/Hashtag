@@ -21,7 +21,7 @@ class Hashtag
                 $hashtag
             );
         } catch (Exception $exception) {
-            return $this->hashtagTable->insertWhereNotExists($hashtag);
+            return $this->hashtagTable->insertIgnore($hashtag);
         }
     }
 }

@@ -16,12 +16,9 @@ class Hashtag
         $this->adapter = $adapter;
     }
 
-    public function insertIfNotExists($hashtag)
-    {
-        return $this->insertWhereNotExists($hashtag);
-    }
-
     /**
+     * Select hashtag ID where hashtag equals.
+     *
      * @throws Exception
      * @return int
      */
@@ -35,30 +32,22 @@ class Hashtag
         ';
         $row = $this->adapter->query($sql, [$hashtag])->current();
 
-        if ($row === false) {
+        if (empty($row)) {
             throw new Exception('Hashtag not found');
         }
 
         return (int) $row['hashtag_id'];
     }
 
-    public function insertWhereNotExists($hashtag)
+    public function insertIgnore($hashtag)
     {
         $sql = '
-            INSERT
+            INSERT IGNORE
               INTO `hashtag` (`hashtag`)
-                SELECT ?
-                FROM `hashtag`
-               WHERE NOT EXISTS (
-                   SELECT `hashtag`
-                     FROM `hashtag`
-                    WHERE `hashtag` = ?
-               )
-               LIMIT 1
-            ;
+            VALUES (?)
+                 ;
         ';
         $parameters = [
-            $hashtag,
             $hashtag
         ];
 
