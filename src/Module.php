@@ -24,7 +24,7 @@ class Module
             'factories' => [
                 HashtagService\Hashtag::class => function ($serviceManager) {
                     return new HashtagService\Hashtag(
-                        $serviceManager->get(SourceTable::class)
+                        $serviceManager->get(HashtagTable\Hashtag::class)
                     );
                 },
                 HashtagTable\Hashtag::class => function ($serviceManager) {
