@@ -26,35 +26,6 @@ class Hashtag
      * @param array $array
      * @return HashtagEntity\Hashtag
      */
-    public function buildFromArray(array $array) : HashtagEntity\Hashtag
-    {
-        $hashtagEntity = new HashtagEntity\Hashtag();
-
-        $hashtagEntity->setHashtagId($array['user_id'])
-                   ->setHashtagname($array['username']);
-
-        if (isset($array['created'])) {
-            $hashtagEntity->setCreated(
-                new DateTime($array['created'])
-            );
-        }
-
-        $hashtagEntity->setViews(
-            (int) ($array['views'] ?? 0)
-        );
-        $hashtagEntity->setWelcomeMessage(
-            (string) ($array['welcome_message'] ?? '')
-        );
-
-        return $hashtagEntity;
-    }
-
-    /**
-     * Build from array.
-     *
-     * @param array $array
-     * @return HashtagEntity\Hashtag
-     */
     public function buildFromArray(array $array)
     {
         $hashtagEntity = new HashtagEntity\Hashtag();
