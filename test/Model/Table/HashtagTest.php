@@ -52,8 +52,10 @@ class HashtagTest extends TestCase
         $hashtag = 'ootd';
 
         try {
-            $hashtagId = $this->hashtagTable->selectHashtagIdWhereHashtagEquals($hashtag);
-            $this->fail('This code should not be run.');
+            $hashtagId = $this->hashtagTable->selectHashtagIdWhereHashtagEquals(
+                $hashtag
+            );
+            $this->fail();
         } catch (Exception $exception) {
             $this->assertSame(
                 'Hashtag not found',
@@ -93,6 +95,21 @@ class HashtagTest extends TestCase
         $this->assertEquals(
             3,
             $this->hashtagTable->insertIgnore($hashtag)
+        );
+    }
+
+    public function testSelectWhereHashtag()
+    {
+        $hashtag = 'ootd';
+        $this->hashtagTable->insertIgnore($hashtag);
+
+        $array = [
+            'hashtag_id' => '1',
+            'hashtag'    => 'ootd',
+        ];
+        $this->assertSame(
+            $array,
+            $this->hashtagTable->selectWhereHashtag($hashtag)
         );
     }
 }
