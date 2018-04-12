@@ -39,6 +39,18 @@ class Hashtag
         return (int) $row['hashtag_id'];
     }
 
+    public function selectWhereHashtag(string $hashtag) : array
+    {
+        $sql = '
+            SELECT `hashtag_id`
+                 , `hashtag`
+              FROM `hashtag`
+             WHERE `hashtag` = ?
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute([$hashtag])->current();
+    }
+
     public function insertIgnore($hashtag)
     {
         $sql = '
