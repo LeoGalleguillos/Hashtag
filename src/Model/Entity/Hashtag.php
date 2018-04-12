@@ -1,6 +1,8 @@
 <?php
 namespace LeoGalleguillos\Hashtag\Model\Entity;
 
+use LeoGalleguillos\Hashtag\Model\Entity as HashtagEntity;
+
 class Hashtag
 {
     /**
