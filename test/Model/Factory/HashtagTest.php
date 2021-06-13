@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class HashtagTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->hashtagTableMock   = $this->createMock(HashtagTable\Hashtag::class);
         $this->hashtagFactory = new HashtagFactory\Hashtag(

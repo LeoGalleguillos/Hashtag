@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class HashtagTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->hashtagTable   = $this->createMock(HashtagTable\Hashtag::class);
         $this->hashtagService = new HashtagService\Hashtag(

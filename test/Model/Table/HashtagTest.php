@@ -19,7 +19,7 @@ class HashtagTest extends TestCase
      */
     protected $hashtagTable;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $configArray        = require(__DIR__ . '/../../../config/autoload/local.php');
         $configArray        = $configArray['db']['adapters']['leogalle_test'];
